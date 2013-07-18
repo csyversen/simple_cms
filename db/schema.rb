@@ -11,17 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709174228) do
+ActiveRecord::Schema.define(:version => 20130718215717) do
 
   create_table "admin_users", :force => true do |t|
     t.string   "first_name",      :limit => 25
     t.string   "last_name",       :limit => 50
     t.string   "email",           :limit => 100, :default => "", :null => false
-    t.string   "hashed_password", :limit => 40
+    t.string   "hashed_password", :limit => 64
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
     t.string   "username",        :limit => 25
-    t.string   "salt",            :limit => 40
+    t.string   "salt",            :limit => 64
   end
 
   add_index "admin_users", ["username"], :name => "index_admin_users_on_username"
