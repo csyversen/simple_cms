@@ -1,0 +1,14 @@
+<%= link_to("<< Back to List", {:action => 'list'}, :class => "back-link") %>
+
+<div class="admin new">
+  <h2>Update Admin</h2>
+
+  <%= form_for(:admin, :url => {:action => "update", :id => @admin.id}) do |f| %>
+
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+
+    <div class="form-buttons">
+      <%= submit_tag("Update Admin") %>
+    </div>
+  <% end %>
+</div>

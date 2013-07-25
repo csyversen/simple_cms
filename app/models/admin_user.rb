@@ -34,11 +34,18 @@ class AdminUser < ActiveRecord::Base
   has_many :sections, :through => :section_edits
 
   scope :named, lambda {|first, last| where(:first_name => first, :last_name => last)}
+  scope :sorted,  order{ "admin_users.last_name ASC, admin_users.first_name ASC" }
+
 
   attr_accessor :password
 
   before_save :create_hashed_password
   after_save :clear_password
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
 
   def self.make_salt(username = "")
     Digest::SHA2.hexdigest("Use #{username} with #{Time.now} to maek salt")

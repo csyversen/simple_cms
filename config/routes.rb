@@ -1,5 +1,21 @@
 SimpleCms::Application.routes.draw do
   
+  #get "admin_users/index"
+
+  #get "admin_users/list"
+
+  #get "admin_users/new"
+
+  #get "admin_users/create"
+
+  #get "admin_users/edit"
+
+  #get "admin_users/update"
+
+  #get "admin_users/delete"
+
+  #get "admin_users/destroy"
+
   match 'admin', :to => "access#menu"
 
   get "demo/index"
