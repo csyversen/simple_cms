@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   end
 
   def list
-    @pages = Page.order("pages.position ASC").where(:subject_id => @subject_id)
+    @pages = Page.order("pages.position ASC").where(:subject_id => params[:subject_id])
   end
 
   def show
@@ -54,6 +54,7 @@ class PagesController < ApplicationController
     @page.permalink = params[:page][:permalink]
     @page.position = params[:page][:position]
     @page.visible = params[:page][:visible]
+    @page.subject_id = params[:page][:subject_id]
 
     if @page.save
       flash[:notice] = "Page created!"
@@ -86,11 +87,3 @@ class PagesController < ApplicationController
 
 end
 
-
-t.integer  "subject_id"
-    t.string   "name"
-    t.string   "permalink"
-    t.integer  "position"
-    t.boolean  "visible",    :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at", 
