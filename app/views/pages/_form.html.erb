@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <th><%= f.label(:position) %> </th>
-        <td><%= f.select(:position, 1..Page.count) %></td>
+        <td><%= f.select(:position, 1..@subject.pages.count) %></td>
       </tr>
       <tr>
         <th><%= f.label(:visible) %> </th>

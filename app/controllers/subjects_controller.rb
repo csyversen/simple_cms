@@ -28,12 +28,14 @@ class SubjectsController < ApplicationController
     # instantiate a new object using form parameters
     @subject = Subject.new
     @subject.name = params[:subject][:name]
-    @subject.position = params[:subject][:position]
+    #@subject.position = params[:subject][:position]
     @subject.visible = params[:subject][:visible]
 
     # save the object
     if @subject.save
       # if the save succeeds, redirect to the list action
+      @subject.move_to_position(params[:subject][:position])
+
       flash[:notice] = "Subject created"
       redirect_to(:action => "list")
     else
@@ -52,12 +54,14 @@ class SubjectsController < ApplicationController
     # instantiate a new object using form parameters
     @subject = Subject.find(params[:id])
     @subject.name = params[:subject][:name]
-    @subject.position = params[:subject][:position]
+    #@subject.position = params[:subject][:position]
     @subject.visible = params[:subject][:visible]
 
     # save the object
     if @subject.save
       # if the save succeeds, redirect to the list action
+      @subject.move_to_position(params[:subject][:position])
+
       flash[:notice] = "Subject updated"
       redirect_to(:action => "show", :id => @subject.id)
     else
@@ -72,7 +76,9 @@ class SubjectsController < ApplicationController
   end
 
   def destroy
-    Subject.find(params[:id]).destroy
+    subject = Subject.find(params[:id])
+    subject.move_to_position(nil)
+    subject.destroy
     flash[:notice] = "Subject destroyed"
     redirect_to(:action => "list")
   end

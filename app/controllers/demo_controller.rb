@@ -26,4 +26,13 @@ class DemoController < ApplicationController
   def escape_output
   end
 
+  def make_error
+    #render(:text => "test"
+    #  render(:text => @something.upcase)
+    #  render(:text => "1" + 1)
+    logger.debug("hey guys!! it's me lol")
+    render("index")
+    ActiveSupport::Deprecation.warn("deprecation hey lol hahah")
+  end
+
 end

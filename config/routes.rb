@@ -1,22 +1,8 @@
 SimpleCms::Application.routes.draw do
   
-  #get "admin_users/index"
-
-  #get "admin_users/list"
-
-  #get "admin_users/new"
-
-  #get "admin_users/create"
-
-  #get "admin_users/edit"
-
-  #get "admin_users/update"
-
-  #get "admin_users/delete"
-
-  #get "admin_users/destroy"
-
   match 'admin', :to => "access#menu"
+  match "show/:id", :to => "public#show"
+
 
   get "demo/index"
 
@@ -69,7 +55,7 @@ SimpleCms::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'access#index'
+  root :to => 'public#index'
 
   # See how all your routes lay out with "rake routes"
 
